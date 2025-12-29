@@ -1,5 +1,5 @@
 const projectsEl = document.getElementById('projects');
-const USERNAME = 'moharifrifai'; // 🔥 GANTI DENGAN USERNAME GITHUB KAMU
+const USERNAME = 'moharifrifai'; // 🔥 GANTI
 
 async function fetchRepos() {
   const res = await fetch(
@@ -7,7 +7,10 @@ async function fetchRepos() {
   );
   const repos = await res.json();
 
-  const filtered = repos.filter(repo => !repo.fork);
+  const filtered = repos.filter(repo =>
+    !repo.fork &&
+    repo.name !== `${USERNAME}.github.io`
+  );
 
   renderRepos(filtered);
 }
@@ -19,17 +22,29 @@ function renderRepos(repos) {
     const card = document.createElement('div');
     card.className = 'card';
 
-    const demoUrl = repo.homepage
-      ? repo.homepage
-      : `https://${USERNAME}.github.io/${repo.name}/`;
+    const liveDemo =
+      repo.homepage ||
+      `https://${USERNAME}.github.io/${repo.name}/`;
+
+    const previewImage = `
+https://raw.githubusercontent.com/${USERNAME}/${repo.name}/main/preview.png
+`;
 
     card.innerHTML = `
-      <h3>${repo.name}</h3>
-      <p>${repo.description || 'No description provided.'}</p>
+      <img
+        src="${previewImage}"
+        class="preview"
+        onerror="this.src='placeholder.png'"
+      />
 
-      <div class="links">
-        <a href="${repo.html_url}" target="_blank">GitHub</a>
-        <a href="${demoUrl}" target="_blank" class="secondary">Live Demo</a>
+      <div class="card-body">
+        <h3>${repo.name}</h3>
+        <p>${repo.description || 'No description provided.'}</p>
+
+        <div class="links">
+          <a href="${repo.html_url}" target="_blank">GitHub</a>
+          <a href="${liveDemo}" target="_blank" class="secondary">Live Demo</a>
+        </div>
       </div>
     `;
 
