@@ -1,5 +1,5 @@
 const projectsEl = document.getElementById('projects');
-const USERNAME = 'USERNAME'; // 🔥 GANTI DENGAN USERNAME GITHUB KAMU
+const USERNAME = 'moharifrifai'; // 🔥 GANTI DENGAN USERNAME GITHUB KAMU
 
 async function fetchRepos() {
   const res = await fetch(
