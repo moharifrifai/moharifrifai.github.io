@@ -1,5 +1,7 @@
 const projectsEl = document.getElementById('projects');
 const themeToggleBtn = document.getElementById('theme-toggle');
+const cvBtn = document.getElementById('cv-btn');
+const cvModal = document.getElementById('cv-modal');
 // stats element (summary header)
 const statsEl = document.createElement('div');
 statsEl.id = 'stats';
@@ -65,6 +67,33 @@ function closePreviewModal() {
 }
 
 function escListener(e) { if (e.key === 'Escape') closePreviewModal(); }
+
+// CV Modal helpers
+function openCVModal() {
+  cvModal.querySelector('.cv-dialog').setAttribute('aria-hidden', 'false');
+  cvModal.classList.add('open');
+  document.addEventListener('keydown', cvEscListener);
+}
+
+function closeCVModal() {
+  cvModal.querySelector('.cv-dialog').setAttribute('aria-hidden', 'true');
+  cvModal.classList.remove('open');
+  document.removeEventListener('keydown', cvEscListener);
+}
+
+function cvEscListener(e) { if (e.key === 'Escape') closeCVModal(); }
+
+// Wire CV button and modal
+if (cvBtn) {
+  cvBtn.addEventListener('click', openCVModal);
+}
+
+if (cvModal) {
+  const cvBackdrop = cvModal.querySelector('#cv-backdrop');
+  const cvCloseBtn = cvModal.querySelector('#cv-close');
+  if (cvBackdrop) cvBackdrop.addEventListener('click', closeCVModal);
+  if (cvCloseBtn) cvCloseBtn.addEventListener('click', closeCVModal);
+}
 const USERNAME = 'moharifrifai'; // 🔥 GANTI
 
 // Initialize dark mode from localStorage

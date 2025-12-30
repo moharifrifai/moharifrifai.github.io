@@ -33,6 +33,10 @@
         </svg>
         <span>WhatsApp</span>
       </a>
+      <button id="cv-btn" class="contact-link cv-btn" title="View CV">
+        <span class="contact-icon">📄</span>
+        <span>View CV</span>
+      </button>
     </div>
   </div>
   <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
@@ -47,6 +51,23 @@
 <footer class="footer">
   Powered by GitHub API · GitHub Pages
 </footer>
+
+<!-- CV Modal -->
+<div id="cv-modal" class="cv-modal">
+  <div class="cv-backdrop" id="cv-backdrop"></div>
+  <div class="cv-dialog" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="cv-header">
+      <div class="cv-title">Curriculum Vitae</div>
+      <div class="cv-controls">
+        <a id="cv-download" href="./cv.pdf" download class="cv-action">Download PDF</a>
+        <button id="cv-close" class="cv-action">Close</button>
+      </div>
+    </div>
+    <div class="cv-body">
+      <iframe id="cv-iframe" src="./cv.pdf" type="application/pdf"></iframe>
+    </div>
+  </div>
+</div>
 
 <script src="app.js"></script>
 </body>

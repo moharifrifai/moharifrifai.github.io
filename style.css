@@ -460,9 +460,109 @@ body.dark-mode .contact-link {
   border-color: rgba(255, 255, 255, 0.15);
 }
 
-body.dark-mode .contact-link:hover {
-  background: rgba(0, 0, 0, 0.3);
-  border-color: rgba(255, 255, 255, 0.25);
+.cv-btn {
+  border: none;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.cv-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* CV Modal styles */
+.cv-modal { display: none; }
+.cv-modal.open { display: block; }
+
+.cv-modal .cv-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.6);
+  z-index: 9998;
+}
+
+.cv-modal .cv-dialog {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(900px, 95%);
+  max-height: 95vh;
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  z-index: 9999;
+  box-shadow: 0 20px 50px rgba(2, 6, 23, 0.4);
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+}
+
+.cv-modal .cv-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.cv-modal .cv-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.cv-modal .cv-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.cv-modal .cv-body {
+  flex: 1;
+  overflow: auto;
+}
+
+.cv-modal #cv-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+}
+
+.cv-action {
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.3s ease;
+}
+
+.cv-action:hover { opacity: 0.9; }
+
+/* Dark mode CV modal */
+body.dark-mode .cv-modal .cv-dialog {
+  background: #071028;
+  color: #e2e8f0;
+}
+
+body.dark-mode .cv-modal .cv-title {
+  color: #e2e8f0;
+}
+
+body.dark-mode .cv-modal .cv-header {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .cv-action {
+  background: #1e40af;
 }
 
 /* Modal preview styles */
